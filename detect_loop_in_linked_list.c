@@ -8,7 +8,6 @@ typedef struct linked_list{
 list *start = NULL;
 
 typedef struct hash_map{
-    int data;
     list *add;
     struct hash_map *next;
 } hash;
@@ -58,7 +57,6 @@ int detect_loop(list *start)
                         {
                             new->add = current;
                             new->next = NULL;
-                            new->data = current->data;
                             hash_start = new;
                             last_node = new;
                             first_hash = 1;
@@ -67,7 +65,6 @@ int detect_loop(list *start)
                         {
                             new->add = current->next;
                             new->next = NULL;
-                            new->data = current ->next-> data;
                             last_node->next = new;
                             last_node = last_node->next;
                             first_hash = 0;
