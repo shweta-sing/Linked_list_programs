@@ -11,13 +11,13 @@ typedef struct hash_map{
     list *add;
     struct hash_map *next;
 } hash;
-hash *hash_start = NULL;
 
 
-int detect_loop(list *start)
+list* detect_loop(list *start)
 {
     list *current=NULL, *loop_ptr = NULL, *loop_start = NULL;
     hash *current_hash=NULL, *last_node = NULL;
+    hash *hash_start = NULL;
     int loop_found = 0, loop_length=0, first_hash = 0;//first_hash is used as flag to mark the creation of first hash block
     if(start==NULL)
         printf("\nThe list is empty. Add some elements before performing this operation");
@@ -25,6 +25,8 @@ int detect_loop(list *start)
     {
         if(start->next==start)
         {
+            loop_found = 1;
+            loop_ptr = start;
             printf("\nA self loop is detected at first element.");
         }
         else
@@ -114,6 +116,10 @@ int detect_loop(list *start)
             }
         }
     }
+    if(loop_found==1)
+        return loop_ptr;
+    else
+        return NULL;
 }
 
 int main()
