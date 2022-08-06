@@ -7,13 +7,6 @@ typedef struct linked_list{
 } list;
 list *start = NULL;
 
-typedef struct hash_map{
-    int data;
-    int freq ;
-    struct hash_map *next;
-} hash;
-hash *hash_start = NULL;
-
 
 int insert_end(int num)
 {
@@ -106,6 +99,8 @@ int del_repeated(list *start)
                 }
                 current = current->next;
                 occurrences = 1;
+                if(current==NULL)
+                    break;
             }
         }
     }
@@ -139,9 +134,9 @@ int main()
         switch(choice)
         {
             case 1: printf("\nEnter value: ");
-            scanf("%d",&num);
-            insert_end(num);
-            break;
+                scanf("%d",&num);
+                insert_end(num);
+                break;
             case 2:
                 print_list();
                 break;
