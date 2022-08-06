@@ -12,7 +12,7 @@ typedef struct hash_map{
     int freq ;
     struct hash_map *next;
 } hash;
-hash *hash_start = NULL;
+
 
 int show_hash_freq(hash *start);
 
@@ -61,6 +61,7 @@ int print_list()
 int show_freq(list *ptr)
 {
     list *current;
+    hash *hash_start = NULL;
     hash *current_hash = NULL;
     int found = 0;
     if(start==NULL)
@@ -72,17 +73,11 @@ int show_freq(list *ptr)
         {
             if(hash_start==NULL)
             {
-                printf("\nEntered if....123");
                 hash *col = (hash*) malloc(sizeof (hash));
-                printf("\nhash *col = (hash*) malloc(sizeof (hash));");
                 col -> next = NULL;
-                printf("\ncol -> next = NULL;");
                 col -> data = start -> data;
-                printf("\ncol -> data = start -> data;");
                 col -> freq = 1;
-                printf("\ncol -> freq = 1;");
                 hash_start = col;
-                printf("\nEnd of if....123");
             }
             else
             {
@@ -102,7 +97,7 @@ int show_freq(list *ptr)
                 }
                 else
                 {
-                   // current_hash = hash_start;
+                    // current_hash = hash_start;
                     while(current_hash->next !=NULL)
                     {
                         if(current->data == current_hash->data)
@@ -167,9 +162,9 @@ int main()
         switch(choice)
         {
             case 1: printf("\nEnter value: ");
-            scanf("%d",&num);
-            insert_end(num);
-            break;
+                scanf("%d",&num);
+                insert_end(num);
+                break;
             case 2:
                 print_list();
                 break;
